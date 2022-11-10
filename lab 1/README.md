@@ -87,3 +87,4 @@ kubectl get pods --all-namespaces
 ```
 kubectl port-forward ingress-nginx-controller-5959f988fd-lnq4q 5000:80 --namespace ingress-nginx
 ```
+![image](https://github.com/DmIrina/5-MD/blob/main/lab%201/image.jpeg)
