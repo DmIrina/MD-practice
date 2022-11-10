@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: movies
+  name: movies
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: movies
+  template:
+    metadata:      
+      labels:
+        app: movies
+    spec:
+      containers:
+      - name: movies
+        image: dmirina/movies:1.1
+        ports:
+          - containerPort: 8080
