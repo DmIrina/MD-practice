@@ -1,9 +1,11 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: client
+  name: ingress
   annotations:    
     nginx.ingress.kubernetes.io/use-regex: "true"  
+    # Using a different port (not 80)
+    port: 5000
 spec:
   rules:
   - http:

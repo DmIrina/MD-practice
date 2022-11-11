@@ -16,7 +16,6 @@ public class MovieController {
         this.repository = repository;
     }
 
-    @CrossOrigin(origins = "http://localhost:5000")
     @GetMapping("/good-movies")
     public Collection<Movie> goodMovies() {
         return repository.findAll().stream()

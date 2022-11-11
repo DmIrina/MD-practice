@@ -5,7 +5,7 @@ metadata:
     app: client
   name: client
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: client
@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: client
-        image: dmirina/client:1.2
+        image: dmirina/client:1.5
         ports:
-          - containerPort: 3000
+          - containerPort: 80

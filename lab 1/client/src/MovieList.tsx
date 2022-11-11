@@ -27,8 +27,7 @@ class MovieList extends React.Component<MovieListProps, MovieListState> {
     componentDidMount() {
         this.setState({isLoading: true});
 
-        fetch('http://localhost:5000/good-movies')
-      //  fetch('http://movies:8080/good-movies')
+        fetch('http://localhost:80/good-movies')      
             .then(response => response.json())
             .then(data => this.setState({movies: data, isLoading: false}));
     }

@@ -1,0 +1,41 @@
+apiVersion: v1
+items:
+- apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"nginx.ingress.kubernetes.io/use-regex":"true"},"name":"ingress","namespace":"default"},"spec":{"rules":[{"http":{"paths":[{"backend":{"service":{"name":"client","port":{"number":3000}}},"path":"/","pathType":"Prefix"},{"backend":{"service":{"name":"movies","port":{"number":8080}}},"path":"/good-movies","pathType":"Prefix"}]}}]}}
+      nginx.ingress.kubernetes.io/use-regex: "true"
+    creationTimestamp: "2022-11-11T17:58:28Z"
+    generation: 1
+    name: ingress
+    namespace: default
+    resourceVersion: "8971"
+    uid: 1a49be11-1a0a-4b6d-892e-ab6d32bc3460
+  spec:
+    ingressClassName: nginx
+    rules:
+    - http:
+        paths:
+        - backend:
+            service:
+              name: client
+              port:
+                number: 3000
+          path: /
+          pathType: Prefix
+        - backend:
+            service:
+              name: movies
+              port:
+                number: 8080
+          path: /good-movies
+          pathType: Prefix
+  status:
+    loadBalancer:
+      ingress:
+      - ip: 192.168.49.2
+kind: List
+metadata:
+  resourceVersion: ""

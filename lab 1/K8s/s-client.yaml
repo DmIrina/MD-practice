@@ -8,7 +8,7 @@ metadata:
 spec:
   ports:
   - port: 3000
-    targetPort: 3000
+    targetPort: 80
   selector:
     app: client
   type: ClusterIP
