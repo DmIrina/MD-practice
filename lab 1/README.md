@@ -4,7 +4,7 @@
 ---
 
 ### MoviesService - Spring Boot App (backend)
-### create jar
+### create jar (optional)
 
 ```
 cd MoviesService
@@ -17,14 +17,14 @@ mvnw package
 ---
 
 ### containerizing
-#### containers _dmirina/movies:1.1_ and _dmirina/client:1.2_ already exist on [hub.docker.com/repositories](http:/hub.docker.com/repositories "hub.docker.com/repositories"))
+#### containers _dmirina/movies:1.5_ and _dmirina/client:1.5_ already exist on [hub.docker.com/repositories](http:/hub.docker.com/repositories "hub.docker.com/repositories"))
 
 ```
-docker build -t <username>/movies:1.1 .
+docker build -t <username>/movies:1.5 .
 ```
 
 ```
-docker push <username>/movies:1.1
+docker push <username>/movies:1.5
 ```
 
 ```
@@ -32,11 +32,11 @@ cd ..\client
 ```
 
 ```
-docker build -t <username>/client:1.2 .
+docker build -t <username>/client:1.5 .
 ```
 
 ```
-docker push <username>/client:1.2
+docker push <username>/client:1.5
 ```
 
 ---
@@ -64,8 +64,22 @@ kubectl apply -f s-movies.yaml
 ```
 
 ```
+minikube addons enable ingress
+```
+
+```
+minikube addons list
+```
+
+```
 kubectl apply -f ingress.yaml
 ```
+
+```
+minikube tunnel
+```
+
+### port-forwarding ingress (optional)
 
 ```
 kubectl get pods --all-namespaces
@@ -78,13 +92,14 @@ kubectl get pods --all-namespaces
 |...|...|...|...|...|...|
 
 
-
-### forward ingress port 80 to localhost:5000 
-#### [MoviesService](https://github.com/DmIrina/5-MD-lab1/blob/main/MoviesService/src/main/java/com/example/moviesservice/MovieController.java "MoviesService")
-> @CrossOrigin(origins = [http://localhost:5000](http://localhost:5000 "localhost"))
-
-
 ```
 kubectl port-forward ingress-nginx-controller-5959f988fd-lnq4q 5000:80 --namespace ingress-nginx
 ```
+
+### minikube dashboard (optional)
+
+```
+minikube dashboard --url
+```
+
 ![image](https://github.com/DmIrina/5-MD/blob/main/lab%201/image.jpeg)
