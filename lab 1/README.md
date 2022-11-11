@@ -63,6 +63,8 @@ kubectl apply -f s-client.yaml
 kubectl apply -f s-movies.yaml
 ```
 
+### Ingress
+
 ```
 minikube addons enable ingress
 ```
@@ -78,6 +80,8 @@ kubectl apply -f ingress.yaml
 ```
 minikube tunnel
 ```
+
+---
 
 ### port-forwarding ingress (optional)
 
