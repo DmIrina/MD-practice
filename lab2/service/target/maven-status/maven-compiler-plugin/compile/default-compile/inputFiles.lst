@@ -1,0 +1,11 @@
+/Volumes/Data/Projects/spring/JPA/mysqldemo/src/main/java/com/example/movies/entity/Movie.java
+/Volumes/Data/Projects/spring/JPA/mysqldemo/src/main/java/com/example/movies/repository/MovieRepository.java
+/Volumes/Data/Projects/spring/JPA/mysqldemo/src/main/java/com/example/movies/MoviesApplication.java
+/Volumes/Data/Projects/spring/JPA/mysqldemo/src/main/java/com/example/movies/controller/MovieController.java
+/Volumes/Data/Projects/spring/JPA/mysqldemo/src/main/java/com/example/movies/service/MovieService.java
+/Volumes/Data/Projects/spring/JPA/mysqldemo/src/main/java/com/example/movies/repository/SessionRepository.java
+/Volumes/Data/Projects/spring/JPA/mysqldemo/src/main/java/com/example/movies/service/SessionService.java
+/Volumes/Data/Projects/spring/JPA/mysqldemo/src/main/java/com/example/movies/service/MovieServiceImpl.java
+/Volumes/Data/Projects/spring/JPA/mysqldemo/src/main/java/com/example/movies/service/SessionServiceImpl.java
+/Volumes/Data/Projects/spring/JPA/mysqldemo/src/main/java/com/example/movies/controller/SessionController.java
+/Volumes/Data/Projects/spring/JPA/mysqldemo/src/main/java/com/example/movies/entity/Session.java
