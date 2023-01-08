@@ -1,0 +1,9 @@
+mysql:
+  fullnameOverride: mysql
+  auth:
+    database: "cinema"
+    rootPassword: "mypass"
+  primary:
+    persistence:
+      enabled: true
+      size: 5Gi

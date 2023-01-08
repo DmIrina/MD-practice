@@ -1,0 +1,10 @@
+apiVersion: v2
+type: application
+version: 0.3.0
+name: movie-service
+appVersion: "0.3"
+description: "Movie service: Helm launch"
+dependencies:
+  - name: common
+    version: 0.3.0
+    repository: file://../common

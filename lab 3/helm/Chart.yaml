@@ -1,0 +1,13 @@
+apiVersion: v2
+type: application
+version: 0.3.0          # Версія чарту
+name: helm-movie         
+appVersion: "0.3"
+description: "cinema:helm Lab03"
+dependencies:
+  - name: mysql
+    version: 9.4.5
+    repository: https://charts.bitnami.com/bitnami
+  - name: common
+    version: 0.3.0
+    repository: file://charts/common
