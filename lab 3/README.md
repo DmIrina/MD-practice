@@ -12,7 +12,7 @@ docker build --no-cache -t dmirina/microservices-service:3.2 service
 ```
 
 ```
-docker push dmirina/microservices-service:2.1
+docker push dmirina/microservices-service:3.2
 ```
 
 #### Client - Front-end
