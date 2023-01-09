@@ -1,7 +1,7 @@
 image:
   repository: dmirina
-  name: movie                   # образ з докера
-  tag: 2.1                      # версія образа
+  name: microservices-service                   # образ з докера
+  tag: 3.2                      # версія образа
 
 migrations:
   image:
@@ -27,5 +27,5 @@ service:
       containerPort: 8080                # порт контейнера
 
 ingress:
-  path: /api/session
+  path: /api
   port: http

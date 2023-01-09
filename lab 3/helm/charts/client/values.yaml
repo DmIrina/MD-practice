@@ -1,7 +1,7 @@
 image:
   repository: dmirina
-  name: client
-  tag: 2.4
+  name: microservices-client
+  tag: 3.2
 
 service:
   ports:
