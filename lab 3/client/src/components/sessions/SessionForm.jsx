@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import MyInput from "./UI/input/MyInput";
-import MyButton from "./UI/button/MyButton";
+import MyInput from "../UI/input/MyInput";
+import MyButton from "../UI/button/MyButton";
 
 const SessionForm = ({create}) => {
     const [session, setSession] = useState({name: 'Ранковий сеанс', room: 'Велика блакитна', date: new Date().toLocaleDateString(), time: '08:00'})

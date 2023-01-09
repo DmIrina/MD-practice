@@ -1,9 +1,9 @@
 import React, {useMemo, useState} from 'react';
 import axios from "axios";
-import PostForm from "../components/PostForm";
-import Loader from "../components/UI/Loader/Loader";
-import PostList from "../components/PostList";
-import MyButton from "../components/UI/button/MyButton";
+import PostForm from "../../components/Draft/PostForm";
+import Loader from "../../components/UI/Loader/Loader";
+import PostList from "../../components/Draft/PostList";
+import MyButton from "../../components/UI/button/MyButton";
 
 function SimplePosts() {
     const [posts, setPosts] = useState([

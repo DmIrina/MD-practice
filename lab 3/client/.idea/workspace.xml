@@ -22,6 +22,21 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\3grade\MD\lab3\client\src\components\movies" />
+      <recent name="D:\3grade\MD\lab3\client\src\hooks" />
+      <recent name="D:\3grade\MD\lab3\client\src\API" />
+      <recent name="D:\3grade\MD\lab3\client\src\pages" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\3grade\MD\lab3\client\src\components\sessions" />
+      <recent name="D:\3grade\MD\lab3\client\src\API\draft" />
+      <recent name="D:\3grade\MD\lab3\client\src\hooks\draft" />
+      <recent name="D:\3grade\MD\lab3\client\src\components\Draft" />
+      <recent name="D:\3grade\MD\lab3\client\src\pages\draft" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -34,6 +49,8 @@
       <workItem from="1672945079381" duration="9731000" />
       <workItem from="1672990149676" duration="430000" />
       <workItem from="1673125809353" duration="150000" />
+      <workItem from="1673282248735" duration="8106000" />
+      <workItem from="1673294585267" duration="12000" />
     </task>
     <servers />
   </component>

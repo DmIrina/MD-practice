@@ -1,18 +1,19 @@
 import "../styles/App.css"
 import {useFetching} from "../hooks/useFetching";
 import {getPageCount} from "../utils/pages";
-import SessionList from "../components/sessions/SessionList";
 import Loader from "../components/UI/Loader/Loader";
 import Pagination from "../components/UI/pagination/Pagination";
 import {useEffect, useState} from "react";
-import {useSessions} from "../hooks/useSessions";
-import SessionService from "../API/SessionService";
+import {useMovies} from "../hooks/useMovies";
+import MovieService from "../API/MovieService";
 import MyButton from "../components/UI/button/MyButton";
 import MyModal from "../components/UI/modal/MyModal";
-import SessionForm from "../components/sessions/SessionForm";
+import MovieForm from "../components/movies/MovieForm";
+import MovieList from "../components/movies/MovieList";
 
-function Sessions() {
-    const [sessions, setSessions] = useState([])
+
+function Movies() {
+    const [movies, setMovies] = useState([])
 
     const [filter, setFilter] = useState({sort: '', query: ''});
     const [modal, setModal] = useState(false);
@@ -21,32 +22,32 @@ function Sessions() {
     const [page, setPage] = useState(1);    //номер сторінки
     const [needFetch, setNeedFetch] = useState(true);    //номер сторінки
 
-    const sortedAndSearchedSessions = useSessions(sessions, filter.sort, filter.query);
+    const sortedAndSearchedMovies = useMovies(movies, filter.sort, filter.query);
 
-    const [fetchSessions, isSessionsLoading, error] = useFetching(async () => {
-        const response = await SessionService.getAll(limit, page);
-        setSessions(response.data);
+    const [fetchMovies, isMoviesLoading, error] = useFetching(async () => {
+        const response = await MovieService.getAll(limit, page);
+        setMovies(response.data);
         const totalCount = response.headers['x-total-count'];           // кількість постів
         setTotalPages(getPageCount(totalCount, limit));
     })
 
     // якщо залежності - пустий масив [] - useEffect спрацює лише один раз при монтуванні компонента
     useEffect(() => {
-        fetchSessions();
+        fetchMovies();
     }, [page, needFetch])
 
     // callback - функція необхідна для отримання параметра  newSession з нижнього компонента
-    const createSession = async (newSession) => {
+    const createMovie = async (newMovie) => {
 //        setSessions([...sessions, newSession])    // !needFetch і так все перезавантажить
-        const response = await SessionService.post(newSession);
+        const response = await MovieService.post(newMovie);
         setNeedFetch(!needFetch);
         setModal(false)
     }
 
     // Отримати  з дочернього компонента
-    const removeSession = async (session) => {
-        const response = await SessionService.delete(session.id);
-        setSessions(sessions.filter(p => p.id !== session.id))
+    const removeMovie = async (movie) => {
+        const response = await MovieService.delete(movie.id);
+        setMovies(movie.filter(p => p.id !== movie.id));
     }
 
     const changePage = (page) => {
@@ -56,15 +57,15 @@ function Sessions() {
 
     return (
         <div className="App">
-            <MyButton style={{margin: '10px 0 10px 0'}} onClick={() => setModal(true)}>Новий сеанс</MyButton>
+            <MyButton style={{margin: '10px 0 10px 0'}} onClick={() => setModal(true)}>Новий фільм</MyButton>
             <MyModal visible={modal} setVisible={setModal}>
-                <SessionForm create={createSession}/>
+                <MovieForm create={createMovie}/>
             </MyModal>
 
             {error && <h1>Виникла помилка ${error}</h1>}
-            {isSessionsLoading
+            {isMoviesLoading
                 ? <div style={{display: 'flex', justifyContent: 'center', marginTop: 50}}><Loader/></div>
-                : <SessionList remove={removeSession} sessions={sortedAndSearchedSessions} title="Сеанси:"/>
+                : <MovieList remove={removeMovie} movies={sortedAndSearchedMovies} title="Фільми:"/>
             }
 
             <Pagination page={page} changePage={changePage} totalPages={totalPages}/>
@@ -73,4 +74,4 @@ function Sessions() {
     )
 }
 
-export default Sessions;
+export default Movies;

@@ -1,5 +1,5 @@
 import React from 'react';
-import DraftCounter from "../components/Draft/DraftCounter";
+import DraftCounter from "../../components/Draft/DraftCounter";
 
 const Counter = () => {
     return (

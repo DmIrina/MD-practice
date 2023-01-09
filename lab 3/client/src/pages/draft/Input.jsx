@@ -1,5 +1,5 @@
 import React from 'react';
-import DraftInput from "../components/Draft/DraftInput";
+import DraftInput from "../../components/Draft/DraftInput";
 
 const Input = () => {
     return (

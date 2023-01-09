@@ -13,6 +13,7 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.Optional;
 
+@CrossOrigin
 @Controller // This means that this class is a Controller
 @RequestMapping(path="/api/movie") // спільна початкова частина URL буде підставлена в Mapping
 public class MovieController {
@@ -32,16 +33,14 @@ public class MovieController {
     @GetMapping("/{id}")
     public ResponseEntity<Movie> getById(@PathVariable Integer id) {
         Optional<Movie> optionalMovie = movieServiceImpl.findById(id);
-        if (!optionalMovie.isPresent()) {
-            return ResponseEntity.unprocessableEntity().build();
-        }
-        return ResponseEntity.ok(optionalMovie.get());  // статус 200
+        // статус 200
+        return optionalMovie.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.unprocessableEntity().build());
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Movie> delete(@PathVariable Integer id) {
         Optional<Movie> optionalMovie = movieServiceImpl.findById(id);
-        if (!optionalMovie.isPresent()) {
+        if (optionalMovie.isEmpty()) {
             return ResponseEntity.unprocessableEntity().build();
         }
         movieServiceImpl.delete(optionalMovie.get());
@@ -72,7 +71,7 @@ public class MovieController {
         Optional<Movie> optionalMovie = movieServiceImpl.findById(id);
 
         // якщо фільм не існує
-        if (!optionalMovie.isPresent()) {
+        if (optionalMovie.isEmpty()) {
             return ResponseEntity.unprocessableEntity().build();
         }
 

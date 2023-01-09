@@ -16,27 +16,26 @@ public class SessionServiceImpl implements SessionService {
 
     @Override
     public ArrayList<Session> findAll() {
-        return new ArrayList<Session> (sessionRepository.findAll());
+        return new ArrayList<Session>(sessionRepository.findAll());
     }
 
     @Override
     public Optional<Session> findById(Integer id) {
         Optional<Session> opt = sessionRepository.findById(id);
-        if (opt.isPresent())
+        if (opt.isPresent()) {
             return opt;
-        else
+        } else {
             return null;
+        }
     }
 
     @Override
     public Session save(Session session) {                    // PUT , POST
         if (session.getId() == null) {
-            Session savedMovie = sessionRepository.save(session);
-            return savedMovie;
+            return sessionRepository.save(session);
         } else {
             if (sessionRepository.existsById(session.getId())) {
-                Session savedMovie = sessionRepository.save(session);
-                return savedMovie;
+                return sessionRepository.save(session);
             } else {
                 return null;
             }
@@ -54,7 +53,6 @@ public class SessionServiceImpl implements SessionService {
     public void delete(Optional<Session> optionalSession) {
         sessionRepository.delete(optionalSession.get());
     }
-
 
 
 }

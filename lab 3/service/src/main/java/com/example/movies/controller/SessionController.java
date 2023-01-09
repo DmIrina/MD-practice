@@ -17,7 +17,7 @@ import java.util.Optional;
 
 @CrossOrigin
 @Controller // This means that this class is a Controller
-// @RequestMapping(path="") // спільна початкова частина URL буде підставлена в Mapping
+@RequestMapping(path="/api/session") // спільна початкова частина URL буде підставлена в Mapping
 public class SessionController {
 
     @Autowired
@@ -34,26 +34,23 @@ public class SessionController {
     }
 
 
-    @GetMapping("/api/session")
+    @GetMapping()
     public @ResponseBody ArrayList<Session> getAll() {
         return sessionServiceImpl.findAll();
     }
 
     // ResponseEntity - дозволяє в респонзі передати код та об"єкт
-    @GetMapping("/api/session/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Session> getById(@PathVariable Integer id) {
         Optional<Session> optionalSession = sessionServiceImpl.findById(id);
-        if (!optionalSession.isPresent()) {
-            return ResponseEntity.unprocessableEntity().build();
-        }
-        return ResponseEntity.ok(optionalSession.get());
+        return optionalSession.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.unprocessableEntity().build());
     }
 
 
-    @DeleteMapping("/api/session/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Session> delete(@PathVariable Integer id) {
         Optional<Session> optionalSession = sessionServiceImpl.findById(id);
-        if (!optionalSession.isPresent()) {
+        if (optionalSession.isEmpty()) {
             return ResponseEntity.unprocessableEntity().build();
         }
         sessionServiceImpl.delete(optionalSession);
@@ -69,10 +66,10 @@ public class SessionController {
 //    }
 
 
-    @PostMapping("/api/session")
+    @PostMapping()
     public ResponseEntity<Session> create(@RequestBody @Valid Session session) {
         Optional<Movie> optionalMovie = movieServiceImpl.findBySession(session);
-        if (!optionalMovie.isPresent()) {
+        if (optionalMovie.isEmpty()) {
             return ResponseEntity.unprocessableEntity().build();
         }
         session.setMovie(optionalMovie.get());
@@ -84,18 +81,18 @@ public class SessionController {
         return ResponseEntity.created(location).body(savedSession);
     }
 
-    @PutMapping("/api/session/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Session> update(@RequestBody @Valid Session session, @PathVariable Integer id) {
         Optional<Movie> optionalMovie = movieServiceImpl.findBySession(session);
 
         // фільм не існує
-        if (!optionalMovie.isPresent()) {
+        if (optionalMovie.isEmpty()) {
             return ResponseEntity.unprocessableEntity().build();
         }
 
         // сеанс вже існує
         Optional<Session> optionalSession = sessionServiceImpl.findById(id);
-        if (!optionalSession.isPresent()) {
+        if (optionalSession.isEmpty()) {
             return ResponseEntity.unprocessableEntity().build();
         }
 

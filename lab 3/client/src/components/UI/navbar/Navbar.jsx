@@ -5,13 +5,9 @@ const Navbar = () => {
     return (
         <div className="navbar">
             <div className="navbar__links">
-                <Link to="/sessions">Сеанси </Link>
-                {/*<Link to="/posts">Пости </Link>*/}
-                {/*<Link to="/input">Поле </Link>*/}
-                {/*<Link to="/counter">Лічильник </Link>*/}
-                {/*<Link to="/simpleposts">Прості_Пости </Link>*/}
-                <Link to="/">Про сайт </Link>
-                {/*<Link to="/login">Логін </Link>*/}
+                <Link to="/sessions"> Сеанси </Link>
+                <Link to="/movies"> Фільми </Link>
+                <Link to="/"> Про сайт </Link>
             </div>
         </div>
     );
