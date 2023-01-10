@@ -5,7 +5,7 @@
 
 
 ## Images
-### MovieService - Spring Boot App (backend)
+#### MovieService - Spring Boot App (backend)
 
 ```
 docker build --no-cache -t dmirina/microservices-service:3.2 service
