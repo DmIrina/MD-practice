@@ -8,27 +8,27 @@
 ### MovieService - Spring Boot App (backend)
 
 ```
-docker build -t dmirina/movie:2.1 service
+docker build --no-cache -t dmirina/microservices-service:3.2 service
 ```
 
 ```
-docker push dmirina/movie:2.1
+docker push dmirina/microservices-service:3.2
 ```
 
 #### Client - Front-end
 
 ```
-docker build -t dmirina/client:2.4 client
+docker build --no-cache -t dmirina/microservices-client:3.2 client
 ```
 
 ```
-docker push dmirina/client:2.4
+docker push dmirina/microservices-client:3.2
 ```
 
 #### Migrations
 
 ```
-docker build -t dmirina/migrations:2.0 migrations
+docker build --no-cache -t dmirina/migrations:2.0 migrations
 ```
 
 ```
