@@ -8,7 +8,7 @@
 #### MovieService - Spring Boot App (backend)
 
 ```
-docker build --no-cache -t dmirina/cinemaservice:4.1 service
+docker build --no-cache -t dmirina/cinemaservice:4.1 CinemaService
 ```
 
 ```
@@ -18,21 +18,11 @@ docker push dmirina/cinemaservice:4.1
 #### TicketService - Spring Boot App (backend)
 
 ```
-docker build --no-cache -t dmirina/ticketservice:4.1 service
+docker build --no-cache -t dmirina/ticketservice:4.1 TicketService
 ```
 
 ```
-docker push dmirina/ticketservice:4
-```
-
-#### Client - Front-end
-
-```
-docker build --no-cache -t dmirina/microservices-client:4.1 client
-```
-
-```
-docker push dmirina/microservices-client:4.1
+docker push dmirina/ticketservice:4.1
 ```
 
 #### Migrations
@@ -46,8 +36,6 @@ docker push dmirina/migrations:2.0
 ```
 
 ---
-
-### Helm
 
 ```
 choco install kubernetes-helm
@@ -82,8 +70,62 @@ helm install istiod istio/istiod -n istio-system --wait
 ```
 
 ```
+kubectl get all
+```
+
+```
+kubectl apply -f k8s_v1/db
+```
+
+```
+kubectl apply -f k8s_v1/client
+```
+
+```
+kubectl apply -f k8s_v1/cinemaservice
+```
+
+```
+kubectl apply -f k8s_v1/ticketservice
+```
+
+```
+kubectl apply -f k8s_v2_retry/cinema-virtual-service.yaml
+```
+
+```
 minikube tunnel
 ```
+
+
+Postman:
+POST:localhost:80/api/tickets/create
+
+run test
+
+localhost/api/session/session/bad
+
+run test
+
+```
+kubectl apply -f k8s_v2_retry
+```
+
+```
+minikube tunnel
+```
+
+run test
+
+```
+kubectl apply -f k8s_v3_circuit
+```
+
+```
+minikube tunnel
+```
+
+run test
 
 ---
 
