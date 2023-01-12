@@ -1,17 +1,17 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: movie-ingress
+  name: cinema-service-ingress
   annotations:
     kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
     - http:
         paths:
-          - path: /api/session
+          - path: /api
             pathType: "Prefix"
             backend:
               service:
-                name: movies
+                name: cinema-service
                 port:
                   number: 80

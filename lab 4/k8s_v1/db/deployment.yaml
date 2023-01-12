@@ -1,0 +1,33 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+spec:
+  replicas: 1                                   # кількість екземплярів Pod, що буде створено цим Deployment
+  selector:
+    matchLabels:
+      app: mysql                                # This deployment applies to the Pods matching the specified labels (мітка звязок Deployment - Pod)
+  template:
+    metadata:
+     labels:
+       app: mysql                               # Labels to be applied to the Pods in this deployment (мітка Pod для звязку з Deployment та Service)
+    spec:
+      containers:
+        - image: mysql:8.0                      #  Docker
+          imagePullPolicy: "IfNotPresent" 
+          name: mysql                           # контейнер-name
+          ports:
+            - containerPort: 3306
+              name: mysql
+          envFrom:                              # Read environment variables from kubernetes
+            - configMapRef:
+                name: mysql-config
+            - secretRef:
+                name: mysql-secret
+          volumeMounts:
+            - name: mysql-storage
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: mysql-storage
+          persistentVolumeClaim:
+            claimName: pv-claim

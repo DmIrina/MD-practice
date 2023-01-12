@@ -13,7 +13,7 @@ spec:
        app: client
     spec:
       containers:
-        - image: dmirina/client:2.4
+        - image: dmirina/microservices-client:3.2
           imagePullPolicy: "IfNotPresent"
           name: client
           ports:

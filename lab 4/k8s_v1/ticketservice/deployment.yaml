@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: tickets
+  name: tickets
+spec:
+  replicas: 1                                           # кількість екземплярів Pod, що буде створено цим Deployment
+  selector:
+    matchLabels:
+      app: tickets                                      # селектор по якому Deployment зв'язаний з Pod
+  template:
+    metadata:
+     labels:
+       app: tickets                                     # мітка Pod по якому вона буде зв'язана з Deployment та Service
+    spec:
+      containers:
+        - image: dmirina/ticketservice:4.1              # образ Docker
+          imagePullPolicy: "IfNotPresent"
+          name: tickets                                 # ім'я контейнеру
+          ports:
+            - containerPort: 8080                       # порт по якому можна звертатись до поди

@@ -1,0 +1,12 @@
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: cinema-service-destination
+spec:
+  host: cinema-service
+  trafficPolicy:
+    outlierDetection:
+      consecutive5xxErrors: 5 
+      interval: 10s
+      baseEjectionTime: 30s
+      maxEjectionPercent: 80

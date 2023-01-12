@@ -1,0 +1,27 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: cinema-service
+  name: cinema-service
+spec:
+  replicas: 4                                                   # кільк. Pod
+  selector:
+    matchLabels:
+      app: cinema-service                                       # звязок Deployment з Pod
+  template:
+    metadata:
+     labels:
+       app: cinema-service                                      # мітка Pod для зв'язків з Deployment та Service
+    spec:
+      containers:
+        - image: dmirina/cinemaservice:4.1                      # образ Docker
+          imagePullPolicy: "IfNotPresent"
+          name: cinema-service                                  # назва контейнеру
+          ports:
+            - containerPort: 8080                               # порт по якому можна звертатись до поди
+          envFrom:
+            - configMapRef:
+                name: cinema-service-conf
+            - secretRef:    
+                name: cinema-service-secret
