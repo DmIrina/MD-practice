@@ -9,7 +9,7 @@ public class Main {
     static int errorCount = 0;
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        String url = "http://localhost:8081/api/tickets/4";
+        String url = "http://localhost/api/tickets/4";
         int n = 3;
 
         ExecutorService executorService = Executors.newFixedThreadPool(n);
@@ -28,7 +28,7 @@ public class Main {
         }
 
         long duration = System.currentTimeMillis() - start;
-        System.out.println("Average duration: " + duration / requestsCount / 1000 + " s");
+        System.out.println("Average duration: " + duration / requestsCount + " ms");
         System.out.println(errorCount + " from " + requestsCount + " requests failed");
     }
 }
