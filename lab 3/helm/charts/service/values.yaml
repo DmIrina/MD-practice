@@ -1,13 +1,13 @@
 image:
   repository: dmirina
   name: microservices-service                   # образ з докера
-  tag: 3.2                      # версія образа
+  tag: 3.2                                      # версія образа
 
 migrations:
   image:
     repository: dmirina
     name: migrations
-    tag: "2.0"
+    tag: "2.1"
   config:
     MYSQL_URL: "mysql://root:mypass@tcp(mysql:3306)/cinema?tls=false"
     VERSION: "20230101"

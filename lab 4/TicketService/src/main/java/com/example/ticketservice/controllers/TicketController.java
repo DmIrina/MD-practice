@@ -16,7 +16,8 @@ import java.util.List;
 @RequestMapping("/api/tickets")
 @Controller
 public class TicketController {
-    private final String cinemaServiceUrl = "http://localhost:8080/api/session";
+    // private final String cinemaServiceUrl = "http://localhost:8080/api/session";
+    private final String cinemaServiceUrl = "http://cinema-service/api/session";
     private final TicketService ticketService;
 
     public TicketController(TicketService ticketService) {

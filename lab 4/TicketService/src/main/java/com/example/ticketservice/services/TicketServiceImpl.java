@@ -22,8 +22,8 @@ public class TicketServiceImpl implements TicketService {
     private final int ROW_MAX = 15;
     private final int PLACE_MAX = 20;
 
-    // private final String cinemaServiceUrl = "http://cinema-service/api/session";
-    private final String cinemaServiceUrl = "http://localhost:8080/api/session";
+    private final String cinemaServiceUrl = "http://cinema-service/api/session";
+    // private final String cinemaServiceUrl = "http://localhost:8080/api/session";
 
     public TicketServiceImpl(TicketRepository ticketRepository) {
         this.ticketRepository = ticketRepository;

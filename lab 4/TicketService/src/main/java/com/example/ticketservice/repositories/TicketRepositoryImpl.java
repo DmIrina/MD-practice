@@ -1,6 +1,5 @@
 package com.example.ticketservice.repositories;
 
-import com.example.ticketservice.dto.TicketDto;
 import com.example.ticketservice.entities.Ticket;
 import org.springframework.stereotype.Repository;
 

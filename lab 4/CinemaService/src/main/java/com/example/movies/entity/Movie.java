@@ -20,7 +20,7 @@ public class Movie {
     @NotNull
     private String name;
 
-    @Column(length=2048)
+    @Column(length = 2048)
     private String description;
 
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
@@ -29,7 +29,7 @@ public class Movie {
     public void setSessions(Set<Session> sessions) {
         this.sessions = sessions;
 
-        for(Session b : sessions) {
+        for (Session b : sessions) {
             b.setMovie(this);
         }
     }

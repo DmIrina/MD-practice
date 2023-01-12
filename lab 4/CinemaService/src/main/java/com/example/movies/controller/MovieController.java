@@ -9,13 +9,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Optional;
 
 @CrossOrigin
-@Controller // This means that this class is a Controller
-@RequestMapping(path="/api/movie") // спільна початкова частина URL буде підставлена в Mapping
+@Controller
+@RequestMapping(path = "/api/movie")
 public class MovieController {
 
     @Autowired
@@ -26,14 +27,14 @@ public class MovieController {
 
 
     @GetMapping()
-    public @ResponseBody ArrayList<Movie> getAll() {
+    public @ResponseBody
+    ArrayList<Movie> getAll() {
         return movieServiceImpl.findAll();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Movie> getById(@PathVariable Integer id) {
         Optional<Movie> optionalMovie = movieServiceImpl.findById(id);
-        // статус 200
         return optionalMovie.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.unprocessableEntity().build());
     }
 
@@ -44,28 +45,27 @@ public class MovieController {
             return ResponseEntity.unprocessableEntity().build();
         }
         movieServiceImpl.delete(optionalMovie.get());
-        return ResponseEntity.noContent().build();              // 204 - no content
+        return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/delete")
     public ResponseEntity<?> delete() {
         if (movieServiceImpl.deleteAllData())
-            return ResponseEntity.noContent().build();      // ok - 204 (без тексту)
+            return ResponseEntity.noContent().build();
         else
             return ResponseEntity.unprocessableEntity().build();
     }
 
-    // localhost:8080/movie  + JSON in BODY
+
     @PostMapping
     public ResponseEntity<Movie> create(@Valid @RequestBody Movie movie) {
         Movie savedMovie = movieServiceImpl.save(movie);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-                .buildAndExpand(savedMovie.getId()).toUri();            // буде сформовано LOCATION з URL типу такого: http://localhost:8080/movie/3
-        return ResponseEntity.created(location).body(savedMovie);       // 201 - created
+                .buildAndExpand(savedMovie.getId()).toUri();
+        return ResponseEntity.created(location).body(savedMovie);
     }
 
-    // змінити запис (id не змінювати в жодному разі!!!), дані передаються в body
-    // localhost:8080/movie/3522  + JSON in BODY
+
     @PutMapping("/{id}")
     public ResponseEntity<Movie> update(@PathVariable Integer id, @Valid @RequestBody Movie movie) {
         Optional<Movie> optionalMovie = movieServiceImpl.findById(id);
@@ -77,6 +77,6 @@ public class MovieController {
 
         movie.setId(optionalMovie.get().getId());
         movieServiceImpl.save(movie);
-        return ResponseEntity.noContent().build();                      // ok - 204 (без тексту)
+        return ResponseEntity.noContent().build();
     }
 }

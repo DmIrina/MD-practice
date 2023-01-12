@@ -13,12 +13,14 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Optional;
 
 @CrossOrigin
-@Controller // This means that this class is a Controller
-@RequestMapping(path="/api/session") // спільна початкова частина URL буде підставлена в Mapping
+@Controller
+@RequestMapping(path = "/api/session")
 public class SessionController {
+    private String status = "ok";
 
     @Autowired
     SessionServiceImpl sessionServiceImpl;
@@ -35,13 +37,16 @@ public class SessionController {
 
 
     @GetMapping()
-    public @ResponseBody ArrayList<Session> getAll() {
+    public @ResponseBody
+    ArrayList<Session> getAll() {
         return sessionServiceImpl.findAll();
     }
 
-    // ResponseEntity - дозволяє в респонзі передати код та об"єкт
     @GetMapping("/{id}")
-    public ResponseEntity<Session> getById(@PathVariable Integer id) {
+    public ResponseEntity<Session> getById(@PathVariable Integer id) throws InterruptedException {
+        if (!Objects.equals(status, "ok")) {
+            Thread.sleep(10 * 1000);
+        }
         Optional<Session> optionalSession = sessionServiceImpl.findById(id);
         return optionalSession.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.unprocessableEntity().build());
     }
@@ -56,14 +61,6 @@ public class SessionController {
         sessionServiceImpl.delete(optionalSession);
         return ResponseEntity.noContent().build();  // статус
     }
-
-//    @DeleteMapping("/delete")
-//    public ResponseEntity<?> delete() {
-//        if (sessionServiceImpl.deleteAllData())
-//            return ResponseEntity.noContent().build();      // ok - 204 (без тексту)
-//        else
-//            return ResponseEntity.unprocessableEntity().build();
-//    }
 
 
     @PostMapping()
@@ -101,5 +98,10 @@ public class SessionController {
         sessionServiceImpl.save(session);
 
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/session/bad")
+    public void simulateBadRequest() {
+        status = "failed";
     }
 }
