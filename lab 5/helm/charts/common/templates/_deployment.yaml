@@ -21,18 +21,18 @@ spec:
       labels:
         {{- include "common.selectorLabels" . | nindent 8 }}
     spec:
-#      {{- if .Values.migrations }}
-#      initContainers:
-#        - name: {{ .Values.migrations.name }}
-#          image: {{.Values.migrations.image.repository}}/{{ .Values.migrations.image.name }}:{{ .Values.migrations.image.tag }}
-#          imagePullPolicy: "IfNotPresent"
-#          command: [ "migrate", "-path", "/migrations", "-database",  "$(MYSQL_URL)", "goto", "$(VERSION)", "sleep 5" ]
-#          env:
-#            - name: MYSQL_URL
-#              value: {{ .Values.migrations.config.MYSQL_URL | quote }}
-#            - name: VERSION
-#              value: {{ .Values.migrations.config.VERSION | quote }}
-#      {{- end }}
+      {{- if .Values.migrations }}
+      initContainers:
+        - name: {{ .Values.migrations.name }}
+          image: {{.Values.migrations.image.repository}}/{{ .Values.migrations.image.name }}:{{ .Values.migrations.image.tag }}
+          imagePullPolicy: "IfNotPresent"
+          command: [ "migrate", "-path", "/migrations", "-database",  "$(MYSQL_URL)", "goto", "$(VERSION)", "sleep 5" ]
+          env:
+            - name: MYSQL_URL
+              value: {{ .Values.migrations.config.MYSQL_URL | quote }}
+            - name: VERSION
+              value: {{ .Values.migrations.config.VERSION | quote }}
+      {{- end }}
       containers:
         - image: {{.Values.image.repository}}/{{ .Values.image.name }}:{{ .Values.image.tag }}
           name: {{ .Values.image.name }}

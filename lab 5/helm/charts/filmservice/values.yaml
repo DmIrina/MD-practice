@@ -3,15 +3,15 @@ image:
   name: filmservice                      # образ з докера
   tag: 5.2                               # версія образа
 
-#migrations:
-#  name: run-migrations
-#  image:
-#    repository: dmirina
-#    name: migrations
-#    tag: 2.1
-#  config:
-#    MYSQL_URL: "mysql://root:mypass@tcp(mysql:3306)/cinema?tls=false"
-#    VERSION: "20230101"
+migrations:
+  name: run-migrations
+  image:
+    repository: dmirina
+    name: migrations
+    tag: 2.1
+  config:
+    MYSQL_URL: "mysql://root:mypass@tcp(mysql:3306)/cinema?tls=false"
+    VERSION: "20230101"
 
 configs:
   DB_HOST: "mysql:3306"
