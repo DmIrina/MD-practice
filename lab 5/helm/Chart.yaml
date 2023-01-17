@@ -1,0 +1,16 @@
+apiVersion: v2
+type: application
+version: 0.5.0         # Версія чарту
+name: helm-cinema         
+appVersion: "0.5"
+description: "cinema:helm Lab05"
+dependencies:
+  - name: mysql
+    version: 9.4.5
+    repository: https://charts.bitnami.com/bitnami
+  - name: common
+    version: 0.5.0
+    repository: file://charts/common
+  - name: rabbitmq
+    version: 10.1.16
+    repository: https://charts.bitnami.com/bitnami

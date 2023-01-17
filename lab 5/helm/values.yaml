@@ -1,0 +1,17 @@
+mysql:
+  fullnameOverride: mysql
+  auth:
+    database: "cinema"
+    rootPassword: "mypass"
+  primary:
+    persistence:
+      enabled: true
+      size: 5Gi
+
+rabbitmq:
+  fullnameOverride: rabbitmq
+  auth:
+    username: guest
+    password: guest
+  persistence:
+    enabled: false

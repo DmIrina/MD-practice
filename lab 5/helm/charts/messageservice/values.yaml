@@ -1,0 +1,35 @@
+image:
+  repository: dmirina
+  name: messageservice            # образ з докера
+  tag: 5.1                        # версія образа
+
+#migrations:
+#  name: run-migrations
+#  image:
+#    repository: dmirina
+#    name: migrations
+#    tag: 2.1
+#  config:
+#    MYSQL_URL: "mysql://root:mypass@tcp(mysql:3306)/cinema?tls=false"
+#    VERSION: "20230101"
+
+configs:
+  DB_HOST: "mysql:3306"
+  DB_NAME: "cinema"
+  RABBIT_HOST: "rabbitmq"
+
+secrets:
+  DB_USERNAME: "cm9vdA==" #root
+  DB_PASSWORD: "bXlwYXNz" #mypass
+  RABBIT_USERNAME: "Z3Vlc3Q=" #guest
+  RABBIT_PASSWORD: "Z3Vlc3Q=" #guest
+
+service:
+  ports:
+    - name: http
+      port: 80                           # порт по якому можна звератись до сервісу
+      containerPort: 8080                # порт контейнера
+
+ingress:
+  path: /api/messages
+  port: http

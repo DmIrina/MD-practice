@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="17209640-17ea-4a21-8648-23a3dc9bbd10" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="2Jv2v3UK05w5rZk3xb7eaSKFoNb" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="16.18.0" />
+    <property name="javascript.nodejs.core.library.typings.version" value="16.18.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/hooks" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2021.2.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\3grade\MD\lab5\client\src\hooks" />
+      <recent name="D:\3grade\MD\lab5\client\src\components\messages" />
+      <recent name="D:\3grade\MD\lab5\client\src\API" />
+      <recent name="D:\3grade\MD\lab5\client\src\pages" />
+      <recent name="D:\3grade\MD\lab3\client\src\components\movies" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\3grade\MD\lab3\client\src\components\sessions" />
+      <recent name="D:\3grade\MD\lab3\client\src\API\draft" />
+      <recent name="D:\3grade\MD\lab3\client\src\hooks\draft" />
+      <recent name="D:\3grade\MD\lab3\client\src\components\Draft" />
+      <recent name="D:\3grade\MD\lab3\client\src\pages\draft" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="17209640-17ea-4a21-8648-23a3dc9bbd10" name="Changes" comment="" />
+      <created>1672944462461</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1672944462461</updated>
+      <workItem from="1672944463707" duration="190000" />
+      <workItem from="1672945079381" duration="9731000" />
+      <workItem from="1672990149676" duration="430000" />
+      <workItem from="1673125809353" duration="150000" />
+      <workItem from="1673282248735" duration="8106000" />
+      <workItem from="1673294585267" duration="12000" />
+      <workItem from="1673294861856" duration="2374000" />
+      <workItem from="1673550054127" duration="1648000" />
+      <workItem from="1673812775890" duration="4831000" />
+      <workItem from="1673973058355" duration="436000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
